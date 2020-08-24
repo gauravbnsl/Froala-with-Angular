@@ -1,7 +1,6 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<span class="heading"><strong>Froala with Placeholders</strong></span>
+<br/>
+<br/>
 <button (click)="hide=!hide">Toggle Hidden</button>
 <div *ngIf="!hide">
 <div [froalaEditor]="froalaOptions" [(froalaModel)]="model.details"></div>

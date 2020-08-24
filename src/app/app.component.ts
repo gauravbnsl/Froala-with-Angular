@@ -9,7 +9,6 @@ export class AppComponent  {
   public model: any = {
     details: 'empty'
   };
-  name = 'Angular';
   hide = false;
 
   constructor(){
