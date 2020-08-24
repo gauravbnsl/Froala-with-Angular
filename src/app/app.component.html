@@ -1,0 +1,10 @@
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<button (click)="hide=!hide">Toggle Hidden</button>
+<div *ngIf="!hide">
+<div [froalaEditor]="froalaOptions" [(froalaModel)]="model.details"></div>
+</div>
+<h3>Model-Binding-Check:</h3>
+<p>{{model.details}}</p>
