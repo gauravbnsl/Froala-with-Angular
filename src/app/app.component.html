@@ -49,7 +49,8 @@
     </button>
 <button (click)="hide=!hide">Toggle Hidden</button>
 <div *ngIf="!hide">
-	<div [froalaEditor]="froalaOptions" [(froalaModel)]="model.details"></div>
+	<div [froalaEditor]="froalaOptions" [(froalaModel)]="model.details" (froalaInit)="initialize($event)"></div>
 </div>
+<button (click)="onSave()">Save</button>
 <h3>Model-Binding-Check:</h3>
 <p>{{model.details}}</p>

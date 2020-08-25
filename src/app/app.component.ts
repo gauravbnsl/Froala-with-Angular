@@ -10,6 +10,9 @@ export class AppComponent {
     details: "empty"
   };
   hide = false;
+  public initControls;
+  public deleteAll;
+  public editor;
 
   constructor() {
     console.log("Ctor", this.model.details);
@@ -70,21 +73,19 @@ export class AppComponent {
         debugger;
         console.log("works");
       },
-      initialized: function (){
+      // initialized: () => {
+      //   console.log('initialized');
+      // },
+      click: (clickEvent) => {
+        // Do something here.
+        // this is the editor instance.
         debugger;
-        console.log(this);
-        let editor = this.froalaOptions["events"];
-        // this.el.addEventListener('drop',this.froalaOptions["events"].drop(), true);
-        console.log("initialized", editor);
-        editor.drop(true);
+        console.log(this.editor);
+        console.log(clickEvent);
+        this.editor.markers.insertAtPoint(clickEvent);
+        console.log(this.editor);
       },
-      'click': function (clickEvent) {
-      // Do something here.
-      // this is the editor instance.
-      debugger;
-      console.log(clickEvent);
-      },
-      'drop': function (dropEvent) {
+      drop: function(dropEvent) {
         // Do something here.
         // this is the editor instance.
         debugger;
@@ -93,13 +94,42 @@ export class AppComponent {
     }
   };
 
-  newModel() {
+  publicnewModel() {
     this.model = {};
+  }
+  onSave(){
+    console.log(this.editor.position.getBoundingRect ());
+    
   }
   addPlaceholder() {
     console.log(this.model);
   }
-  onDrop(event){
-    console.log('dropped');
+  onDrop(event) {
+    console.log("dropped");
+  }
+  public initialize(initControls) {
+    debugger;
+    this.initControls = initControls;
+    this.initControls.initialize();
+    this.editor = this.initControls.getEditor();
+    // const wait = time => new Promise((resolve) => setTimeout(resolve, time));
+    console.log(this.editor, typeof this.editor);
+    console.log(
+      this.editor.events.$on(
+        "drop",
+        function(dropEvent) {
+          // Focus at the current posisiton.
+          this.editor.markers.insertAtPoint(dropEvent.originalEvent);
+          var $marker = this.editor.$el.find(".fr-marker");
+          this.editor.selection.restore();
+          return false;
+        },
+        true
+      )
+    );
+    // editor.el.addEventListener('drop', this.froalaOptions["events"].drop, true)
+    // this.deleteAll = function() {
+    // 	this.initControls.getEditor()('html.set', '');
+    // };
   }
 }
