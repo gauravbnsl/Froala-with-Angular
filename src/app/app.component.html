@@ -1,9 +1,55 @@
 <span class="heading"><strong>Froala with Placeholders</strong></span>
 <br/>
 <br/>
+<p draggable="true"> Random text to be dropped</p>
+<br/>
+<br/>
+<button
+      color="primary"
+      (click)="addPlaceholder()"
+      draggable="true"
+    >
+      Client Address
+    </button>
+<button
+      color="primary"
+      (click)="addPlaceholder()"
+      draggable="true"
+    >
+      Client First Name
+    </button>
+<button
+      color="primary"
+      (click)="addPlaceholder()"
+      draggable="true"
+    >
+      Client Full Name
+    </button>
+<button
+
+      color="primary"
+      (click)="addPlaceholder()"
+      draggable="true"
+    >
+      Pet Age
+    </button>
+<button
+      color="primary"
+      (click)="addPlaceholder()"
+      draggable="true"
+    >
+      Pet's Name
+    </button>
+<button
+      color="primary"
+      (click)="addPlaceholder()"
+      draggable="true"
+    >
+      Date DMY
+    </button>
 <button (click)="hide=!hide">Toggle Hidden</button>
 <div *ngIf="!hide">
-<div [froalaEditor]="froalaOptions" [(froalaModel)]="model.details"></div>
+	<div [froalaEditor]="froalaOptions" [(froalaModel)]="model.details"></div>
 </div>
 <h3>Model-Binding-Check:</h3>
 <p>{{model.details}}</p>
